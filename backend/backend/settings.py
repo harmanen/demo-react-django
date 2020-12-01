@@ -20,7 +20,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "&t%m2)(6)t!%xy-5(40%lry#pyz#mxqy9xez8(sc@-_a5=&235"
+SECRET_KEY = (
+    "&t%m2)(6)t!%xy-5(40%lry#pyz#mxqy9xez8(sc@-_a5=&235"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -54,7 +56,7 @@ ROOT_URLCONF = "backend.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -118,3 +120,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = "/static/"
+
+FRONTEND_DIR = (
+    Path(__file__).resolve().parent.parent.parent
+    / "frontend"
+)
+
+STATICFILES_DIRS = [
+    # Bundle location in frontend static directory
+    FRONTEND_DIR
+    / "static",
+]
