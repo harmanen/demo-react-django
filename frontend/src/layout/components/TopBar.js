@@ -1,22 +1,135 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Box, Typography } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    background: theme.palette.background.main,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-}));
+import {
+  Box,
+  Button,
+  Menu,
+  MenuItem,
+  Tab,
+  Tabs,
+  Typography,
+} from '@material-ui/core';
 
-const TopBar = () => {
+const menuContainerHeight = 74;
+
+const useStyles = makeStyles((theme) => {
+  const boxColor = theme.palette.primary.dark;
+  const textColor = theme.palette.background.light;
+
+  return {
+    titleContainer: {
+      background: boxColor,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    title: {
+      color: textColor,
+    },
+    menuContainer: {
+      color: textColor,
+      background: boxColor,
+      borderTop: `10px double ${theme.palette.background.main}`,
+      height: menuContainerHeight,
+      // Center menu button for small devices
+      [theme.breakpoints.down('sm')]: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+    },
+    indicator: {
+      backgroundColor: textColor,
+    },
+    outlined: {
+      borderColor: textColor,
+    },
+    openMenuButton: { color: textColor },
+  };
+});
+
+const TopBar = ({
+  tabs,
+  tabValue,
+  setTabValue,
+  handleTabChange,
+  isMobile,
+}) => {
   const classes = useStyles();
 
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClickOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleClickMenuItem = (newValue) => {
+    console.log(newValue);
+    setTabValue(newValue);
+    setAnchorEl(null);
+  };
+
   return (
-    <Box p={1} className={classes.container}>
-      <Typography variant="h2">Demo</Typography>
+    <Box>
+      {/* Title */}
+      <Box p={1} className={classes.titleContainer}>
+        <Typography variant="h2" className={classes.title}>
+          Demo
+        </Typography>
+      </Box>
+      {/* Menu or tabs */}
+      <Box p={1} className={classes.menuContainer}>
+        {isMobile ? (
+          // Pop-up menu for small devices
+          <Box>
+            <Button
+              variant="outlined"
+              onClick={handleClickOpen}
+              className={classes.openMenuButton}
+              classes={{
+                outlined: classes.outlined,
+              }}
+            >
+              Select component
+            </Button>
+            <Menu
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              {tabs.map((tab, index) => (
+                <MenuItem
+                  key={tab}
+                  onClick={() => handleClickMenuItem(index)}
+                >
+                  {tab}
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+        ) : (
+          // Tabs for large devices
+          <Tabs
+            orientation={'horizontal'}
+            variant="scrollable"
+            value={tabValue}
+            onChange={handleTabChange}
+            classes={{
+              indicator: classes.indicator,
+            }}
+          >
+            {tabs.map((tab) => (
+              <Tab label={tab} id={tabValue} key={tab} />
+            ))}
+          </Tabs>
+        )}
+      </Box>
     </Box>
   );
 };
