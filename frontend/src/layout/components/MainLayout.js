@@ -3,13 +3,12 @@ import { makeStyles, useTheme } from '@material-ui/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import TopBar from './TopBar';
 import { Box, Typography } from '@material-ui/core';
-
-const topBarHeight = 162;
+import { TOP_BAR_HEIGHT } from '../constants';
 
 const useStyles = makeStyles((theme) => ({
-  topBar: { height: topBarHeight },
+  topBar: { height: TOP_BAR_HEIGHT },
   mainContent: {
-    height: `calc(100vh - ${topBarHeight}px)`,
+    height: `calc(100vh - ${TOP_BAR_HEIGHT}px)`,
     background: theme.palette.background.main,
   },
 }));

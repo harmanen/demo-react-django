@@ -11,7 +11,7 @@ import {
   Typography,
 } from '@material-ui/core';
 
-const menuContainerHeight = 74;
+import { MENU_CONTAINER_HEIGHT } from '../constants';
 
 const useStyles = makeStyles((theme) => {
   const boxColor = theme.palette.primary.dark;
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => {
       color: textColor,
       background: boxColor,
       borderTop: `10px double ${theme.palette.background.main}`,
-      height: menuContainerHeight,
+      height: MENU_CONTAINER_HEIGHT,
       // Center menu button for small devices
       [theme.breakpoints.down('sm')]: {
         display: 'flex',
@@ -69,7 +69,6 @@ const TopBar = ({
   };
 
   const handleClickMenuItem = (newValue) => {
-    console.log(newValue);
     setTabValue(newValue);
     setAnchorEl(null);
   };
