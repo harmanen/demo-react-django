@@ -64,4 +64,7 @@ A demo web application for selected React components collected from various proj
 
 **Django REST with React**
 * https://www.valentinog.com/blog/drf/ (2020-12-01)
+
+**Material UI**
+* https://material-ui.com/ (2020-12-02)
  
