@@ -81,3 +81,6 @@ A demo web application for selected React components collected from various proj
 **i18next**
 * https://react.i18next.com/latest/using-with-hooks (2020-12-03)
  
+**Redux**
+* https://redux.js.org/ (2020-12-03)
+* https://react-redux.js.org/introduction/quick-start (2020-12-03)
