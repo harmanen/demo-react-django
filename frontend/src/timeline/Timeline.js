@@ -4,14 +4,13 @@
 
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { makeStyles, useTheme } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
   Stepper,
   Step,
   StepLabel,
-  useMediaQuery,
   Box,
   Grid,
   Button,
@@ -75,10 +74,8 @@ const Timeline = () => {
     (reduxState) => reduxState.timeline,
   );
 
-  const theme = useTheme();
-
-  const isMobile = useMediaQuery(
-    theme.breakpoints.down('xs'),
+  const isMobile = useSelector(
+    (reduxState) => reduxState.isMobile,
   );
 
   const handleClickState = (code) => {

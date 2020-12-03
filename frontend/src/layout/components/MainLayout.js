@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { makeStyles, useTheme } from '@material-ui/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { makeStyles } from '@material-ui/styles';
 import { Box } from '@material-ui/core';
 import TopBar from './TopBar';
 import { TOP_BAR_HEIGHT } from '../constants';
@@ -16,11 +15,6 @@ const useStyles = makeStyles((theme) => ({
 
 const MainLayout = () => {
   const classes = useStyles();
-  const theme = useTheme();
-
-  const isMobile = useMediaQuery(
-    theme.breakpoints.down('xs'),
-  );
 
   const [tabValue, setTabValue] = useState(0);
 
@@ -45,7 +39,6 @@ const MainLayout = () => {
           tabValue={tabValue}
           setTabValue={setTabValue}
           handleTabChange={handleTabChange}
-          isMobile={isMobile}
         />
       </Box>
       {/* Main content  */}

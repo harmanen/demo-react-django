@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/styles';
 
@@ -49,10 +50,10 @@ const TopBar = ({
   tabValue,
   setTabValue,
   handleTabChange,
-  isMobile,
 }) => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const isMobile = useSelector((state) => state.isMobile);
 
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -142,7 +143,6 @@ TopBar.propTypes = {
   tabValue: PropTypes.number.isRequired,
   setTabValue: PropTypes.func.isRequired,
   handleTabChange: PropTypes.func.isRequired,
-  isMobile: PropTypes.bool.isRequired,
 };
 
 export default TopBar;

@@ -7,3 +7,7 @@ export const TOP_BAR_HEIGHT = 162;
 // calculation mentioned above works properly independet of
 // device size
 export const MENU_CONTAINER_HEIGHT = 74;
+
+// Media size limit for mobile devices
+// Used to change layout from horizontal to vertical etc.
+export const MEDIA_LIMIT = 'xs';
