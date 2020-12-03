@@ -3,8 +3,10 @@ import {
   configureStore,
 } from '@reduxjs/toolkit';
 
+import timelineReducer from './timeline/slices';
+
 const reducer = combineReducers({
-  // Add reducers here
+  timeline: timelineReducer,
 });
 
 const store = configureStore({ reducer });

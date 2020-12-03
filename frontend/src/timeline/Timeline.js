@@ -2,9 +2,10 @@
 /* eslint-disable operator-linebreak */
 // ^ Conflicts between prettier and eslint, fix later...
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles, useTheme } from '@material-ui/styles';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   Stepper,
@@ -18,6 +19,7 @@ import {
 
 import CurrentStepIcon from '@material-ui/icons/MoreHoriz';
 import { STATE_CODES } from './constants';
+import { setTimelineState } from './slices';
 
 const useStyles = makeStyles((theme) => ({
   stepper: {
@@ -67,9 +69,10 @@ const stepIndices = {
 const Timeline = () => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const dispatch = useDispatch();
 
-  const [state, setState] = useState(
-    Object.keys(STATE_CODES)[0],
+  const state = useSelector(
+    (reduxState) => reduxState.timeline,
   );
 
   const theme = useTheme();
@@ -79,7 +82,7 @@ const Timeline = () => {
   );
 
   const handleClickState = (code) => {
-    setState(code);
+    dispatch(setTimelineState(code));
   };
 
   const renderStep = (step) => {
