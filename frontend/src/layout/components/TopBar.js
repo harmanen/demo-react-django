@@ -85,6 +85,7 @@ const TopBar = ({
           <Box className={classes.menuBox}>
             <Button
               variant="outlined"
+              size="small"
               onClick={handleClickOpen}
               className={classes.openMenuButton}
               classes={{
