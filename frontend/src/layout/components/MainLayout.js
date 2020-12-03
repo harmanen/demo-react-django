@@ -4,11 +4,22 @@ import { Box } from '@material-ui/core';
 import TopBar from './TopBar';
 import { TOP_BAR_HEIGHT } from '../constants';
 import Timeline from '../../timeline/Timeline';
+import { APP_MAX_WIDTH } from '../../constants';
 
 const useStyles = makeStyles((theme) => ({
-  topBar: { height: TOP_BAR_HEIGHT },
+  appContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  container: {
+    width: '100%',
+    maxWidth: APP_MAX_WIDTH,
+  },
+  topBar: { height: TOP_BAR_HEIGHT, width: '100%' },
   mainContent: {
     height: `calc(100vh - ${TOP_BAR_HEIGHT}px)`,
+    width: '100%',
     background: theme.palette.background.main,
   },
 }));
@@ -31,20 +42,21 @@ const MainLayout = () => {
   ];
 
   return (
-    <Box>
-      {/* Top bar */}
-      <Box className={classes.topBar}>
-        <TopBar
-          tabs={tabs}
-          tabValue={tabValue}
-          setTabValue={setTabValue}
-          handleTabChange={handleTabChange}
-        />
-      </Box>
-      {/* Main content  */}
-      {/* TBD */}
-      <Box p={1} className={classes.mainContent}>
-        {tabs[tabValue].component}
+    <Box className={classes.appContainer}>
+      <Box className={classes.container}>
+        {/* Top bar */}
+        <Box className={classes.topBar}>
+          <TopBar
+            tabs={tabs}
+            tabValue={tabValue}
+            setTabValue={setTabValue}
+            handleTabChange={handleTabChange}
+          />
+        </Box>
+        {/* Main content  */}
+        <Box p={1} className={classes.mainContent}>
+          {tabs[tabValue].component}
+        </Box>
       </Box>
     </Box>
   );
