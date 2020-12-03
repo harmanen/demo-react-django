@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 
 import {
@@ -24,9 +25,7 @@ const useStyles = makeStyles((theme) => {
       alignItems: 'center',
       justifyContent: 'center',
     },
-    title: {
-      color: textColor,
-    },
+    title: { color: textColor },
     menuContainer: {
       color: textColor,
       background: boxColor,
@@ -39,12 +38,8 @@ const useStyles = makeStyles((theme) => {
         justifyContent: 'center',
       },
     },
-    indicator: {
-      backgroundColor: textColor,
-    },
-    outlined: {
-      borderColor: textColor,
-    },
+    indicator: { backgroundColor: textColor },
+    outlined: { borderColor: textColor },
     openMenuButton: { color: textColor },
   };
 });
@@ -115,7 +110,7 @@ const TopBar = ({
         ) : (
           // Tabs for large devices
           <Tabs
-            orientation={'horizontal'}
+            orientation="horizontal"
             variant="scrollable"
             value={tabValue}
             onChange={handleTabChange}
@@ -131,6 +126,14 @@ const TopBar = ({
       </Box>
     </Box>
   );
+};
+
+TopBar.propTypes = {
+  tabs: PropTypes.arrayOf(PropTypes.string).isRequired,
+  tabValue: PropTypes.number.isRequired,
+  setTabValue: PropTypes.func.isRequired,
+  handleTabChange: PropTypes.func.isRequired,
+  isMobile: PropTypes.bool.isRequired,
 };
 
 export default TopBar;
