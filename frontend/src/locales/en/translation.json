@@ -1,3 +1,11 @@
 {
-  "select component": "Select component"
+  "select component": "Select component",
+  "timeline": "Timeline",
+  "received": "Received",
+  "turned down": "Turned down",
+  "in evaluation": "In evaluation",
+  "rejected": "Rejected",
+  "in development": "In development",
+  "discontinued": "Discontinued",
+  "completed": "Completed"
 }

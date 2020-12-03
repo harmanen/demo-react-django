@@ -1,3 +1,11 @@
 {
-  "select component": "Valitse komponentti"
+  "select component": "Valitse komponentti",
+  "timeline": "Aikajana",
+  "received": "Vastaanotettu",
+  "turned down": "Torjuttu",
+  "in evaluation": "Arvioitavana",
+  "rejected": "Hylätty",
+  "in development": "Kehityksessä",
+  "discontinued": "Keskeytetty",
+  "completed": "Valmistunut"
 }

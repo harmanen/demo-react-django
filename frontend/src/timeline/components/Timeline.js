@@ -1,0 +1,161 @@
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { makeStyles, useTheme } from '@material-ui/styles';
+
+import {
+  Stepper,
+  Step,
+  StepLabel,
+  useMediaQuery,
+  Box,
+  Grid,
+  Button,
+} from '@material-ui/core';
+
+import CurrentStepIcon from '@material-ui/icons/MoreHoriz';
+import { STATE_CODES } from '../constants';
+
+const useStyles = makeStyles((theme) => ({
+  stepper: {
+    background: 'none',
+    maxWidth: '100%',
+    overflowX: 'auto',
+  },
+  errorBox: {
+    display: 'flex',
+    justifyContent: 'center',
+    color: theme.palette.error.main,
+  },
+  dateBox: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  test: {
+    color: 'white',
+    background: theme.palette.primary.main,
+    borderRadius: '50%',
+    height: 36,
+    width: 36,
+    border: `5px solid ${theme.palette.primary.main}`,
+    marginTop: -6,
+    marginBottom: -6,
+    marginLeft: 3,
+  },
+}));
+
+const stepLabels = [
+  'received',
+  'in evaluation',
+  'in development',
+  'completed',
+];
+
+const stepIndices = {
+  RE: 0,
+  TU: 1,
+  EV: 1,
+  RJ: 1,
+  DE: 2,
+  DI: 2,
+  CO: 4, // Check circle #4 (index 3)
+};
+
+const Timeline = () => {
+  const classes = useStyles();
+  const { t } = useTranslation();
+
+  const [state, setState] = useState(
+    Object.keys(STATE_CODES)[0],
+  );
+
+  const theme = useTheme();
+
+  const isMobile = useMediaQuery(
+    theme.breakpoints.down('xs'),
+  );
+
+  const handleClickState = (code) => {
+    setState(code);
+  };
+
+  const renderStep = (step) => {
+    let render;
+
+    // Discontinued
+    if (state === 'DI' && step === stepLabels[2]) {
+      render = (
+        <Step key={step}>
+          <StepLabel error>
+            {t(STATE_CODES[state])}
+          </StepLabel>
+        </Step>
+      );
+      // Rejected or turned down
+    } else if (
+      (state === 'RJ' || state === 'TU') &&
+      step === stepLabels[1]
+    ) {
+      render = (
+        <Step key={step}>
+          <StepLabel error>
+            {t(STATE_CODES[state])}
+          </StepLabel>
+        </Step>
+      );
+      // Active or finished
+    } else {
+      render = (
+        <Step key={step}>
+          <StepLabel
+            // Show different icon for current working step
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...(step === STATE_CODES[state] &&
+              step !== 'completed' && {
+                icon: (
+                  <CurrentStepIcon
+                    className={classes.test}
+                  />
+                ),
+              })}
+          >
+            {t(step)}
+          </StepLabel>
+        </Step>
+      );
+    }
+    return render;
+  };
+
+  return (
+    <Box p={2}>
+      <Grid
+        container
+        direction={isMobile ? 'column' : 'row'}
+        justify="space-between"
+        alignItems="center"
+      >
+        {Object.entries(STATE_CODES).map(([code, text]) => (
+          <Grid item key={code}>
+            <Button
+              variant="outlined"
+              color="secondary"
+              onClick={() => handleClickState(code)}
+            >
+              {t(text)}
+            </Button>
+          </Grid>
+        ))}
+      </Grid>
+      <Stepper
+        className={classes.stepper}
+        activeStep={stepIndices[state]}
+        alternativeLabel={!isMobile}
+        orientation={isMobile ? 'vertical' : 'horizontal'}
+      >
+        {stepLabels.map((step) => renderStep(step))}
+      </Stepper>
+    </Box>
+  );
+};
+
+export default Timeline;
