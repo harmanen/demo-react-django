@@ -5,7 +5,7 @@ import { useTheme } from '@material-ui/styles';
 import { useMediaQuery } from '@material-ui/core';
 import MainLayout from './layout/components/MainLayout';
 import { setIsMobile } from './layout/slices';
-import { MEDIA_LIMIT } from './layout/constants';
+import { MEDIA_LIMIT } from './constants';
 
 const App = () => {
   const theme = useTheme();

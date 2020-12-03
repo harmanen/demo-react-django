@@ -19,12 +19,28 @@ import {
 import CurrentStepIcon from '@material-ui/icons/MoreHoriz';
 import { STATE_CODES } from './constants';
 import { setTimelineState } from './slices';
+import { MEDIA_LIMIT } from '../constants';
 
 const useStyles = makeStyles((theme) => ({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    [theme.breakpoints.down(MEDIA_LIMIT)]: {
+      flexDirection: 'row',
+    },
+  },
   stepper: {
     background: 'none',
-    maxWidth: '100%',
+    width: '100%',
+    maxWidth: 1000,
     overflowX: 'auto',
+  },
+  step: {
+    [theme.breakpoints.down(MEDIA_LIMIT)]: {
+      marginBottom: 8,
+    },
   },
   errorBox: {
     display: 'flex',
@@ -35,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
   },
-  test: {
+  stepIcon: {
     color: 'white',
     background: theme.palette.primary.main,
     borderRadius: '50%',
@@ -44,7 +60,12 @@ const useStyles = makeStyles((theme) => ({
     border: `5px solid ${theme.palette.primary.main}`,
     marginTop: -6,
     marginBottom: -6,
-    marginLeft: 3,
+    [theme.breakpoints.down(MEDIA_LIMIT)]: {
+      marginLeft: -5,
+    },
+  },
+  button: {
+    marginBottom: 8,
   },
 }));
 
@@ -88,7 +109,7 @@ const Timeline = () => {
     // Discontinued
     if (state === 'DI' && step === stepLabels[2]) {
       render = (
-        <Step key={step}>
+        <Step key={step} className={classes.step}>
           <StepLabel error>
             {t(STATE_CODES[state])}
           </StepLabel>
@@ -100,7 +121,7 @@ const Timeline = () => {
       step === stepLabels[1]
     ) {
       render = (
-        <Step key={step}>
+        <Step key={step} className={classes.step}>
           <StepLabel error>
             {t(STATE_CODES[state])}
           </StepLabel>
@@ -109,7 +130,7 @@ const Timeline = () => {
       // Active or finished
     } else {
       render = (
-        <Step key={step}>
+        <Step key={step} className={classes.step}>
           <StepLabel
             // Show different icon for current working step
             // eslint-disable-next-line react/jsx-props-no-spreading
@@ -117,7 +138,7 @@ const Timeline = () => {
               step !== 'completed' && {
                 icon: (
                   <CurrentStepIcon
-                    className={classes.test}
+                    className={classes.stepIcon}
                   />
                 ),
               })}
@@ -131,7 +152,7 @@ const Timeline = () => {
   };
 
   return (
-    <Box p={2}>
+    <Box p={2} className={classes.container}>
       <Grid
         container
         direction={isMobile ? 'column' : 'row'}
@@ -143,7 +164,9 @@ const Timeline = () => {
             <Button
               variant="outlined"
               color="secondary"
+              size={isMobile ? 'small' : 'medium'}
               onClick={() => handleClickState(code)}
+              className={classes.button}
             >
               {t(text)}
             </Button>
@@ -151,10 +174,10 @@ const Timeline = () => {
         ))}
       </Grid>
       <Stepper
-        className={classes.stepper}
         activeStep={stepIndices[state]}
         alternativeLabel={!isMobile}
         orientation={isMobile ? 'vertical' : 'horizontal'}
+        className={classes.stepper}
       >
         {stepLabels.map((step) => renderStep(step))}
       </Stepper>
