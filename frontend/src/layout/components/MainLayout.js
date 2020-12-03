@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import TopBar from './TopBar';
 import { Box, Typography } from '@material-ui/core';
+import TopBar from './TopBar';
 import { TOP_BAR_HEIGHT } from '../constants';
 
 const useStyles = makeStyles((theme) => ({

@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { MuiThemeProvider } from '@material-ui/core';
-import App from './App.js';
-import theme from './theme.js';
+import App from './App';
+import theme from './theme';
 
 ReactDOM.render(
   <Router>
