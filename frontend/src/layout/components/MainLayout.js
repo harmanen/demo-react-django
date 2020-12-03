@@ -4,7 +4,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { Box } from '@material-ui/core';
 import TopBar from './TopBar';
 import { TOP_BAR_HEIGHT } from '../constants';
-import Timeline from '../../timeline/components/Timeline';
+import Timeline from '../../timeline/Timeline';
 
 const useStyles = makeStyles((theme) => ({
   topBar: { height: TOP_BAR_HEIGHT },

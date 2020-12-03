@@ -17,7 +17,7 @@ import {
 } from '@material-ui/core';
 
 import CurrentStepIcon from '@material-ui/icons/MoreHoriz';
-import { STATE_CODES } from '../constants';
+import { STATE_CODES } from './constants';
 
 const useStyles = makeStyles((theme) => ({
   stepper: {
