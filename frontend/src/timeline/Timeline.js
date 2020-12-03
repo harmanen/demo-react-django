@@ -20,9 +20,16 @@ import CurrentStepIcon from '@material-ui/icons/MoreHoriz';
 import { STATE_CODES } from './constants';
 import { setTimelineState } from './slices';
 import { MEDIA_LIMIT } from '../constants';
+import Description from '../layout/components/Description';
 
 const useStyles = makeStyles((theme) => ({
   container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  innerContainer: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -153,34 +160,41 @@ const Timeline = () => {
 
   return (
     <Box p={2} className={classes.container}>
-      <Grid
-        container
-        direction={isMobile ? 'column' : 'row'}
-        justify="space-between"
-        alignItems="center"
-      >
-        {Object.entries(STATE_CODES).map(([code, text]) => (
-          <Grid item key={code}>
-            <Button
-              variant="outlined"
-              color="secondary"
-              size={isMobile ? 'small' : 'medium'}
-              onClick={() => handleClickState(code)}
-              className={classes.button}
-            >
-              {t(text)}
-            </Button>
-          </Grid>
-        ))}
-      </Grid>
-      <Stepper
-        activeStep={stepIndices[state]}
-        alternativeLabel={!isMobile}
-        orientation={isMobile ? 'vertical' : 'horizontal'}
-        className={classes.stepper}
-      >
-        {stepLabels.map((step) => renderStep(step))}
-      </Stepper>
+      <Description
+        description={t('timeline description')}
+      />
+      <Box className={classes.innerContainer}>
+        <Grid
+          container
+          direction={isMobile ? 'column' : 'row'}
+          justify="space-between"
+          alignItems="center"
+        >
+          {Object.entries(STATE_CODES).map(
+            ([code, text]) => (
+              <Grid item key={code}>
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  size={isMobile ? 'small' : 'medium'}
+                  onClick={() => handleClickState(code)}
+                  className={classes.button}
+                >
+                  {t(text)}
+                </Button>
+              </Grid>
+            ),
+          )}
+        </Grid>
+        <Stepper
+          activeStep={stepIndices[state]}
+          alternativeLabel={!isMobile}
+          orientation={isMobile ? 'vertical' : 'horizontal'}
+          className={classes.stepper}
+        >
+          {stepLabels.map((step) => renderStep(step))}
+        </Stepper>
+      </Box>
     </Box>
   );
 };

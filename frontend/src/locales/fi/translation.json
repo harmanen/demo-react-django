@@ -7,5 +7,6 @@
   "rejected": "Hylätty",
   "in development": "Kehityksessä",
   "discontinued": "Keskeytetty",
-  "completed": "Valmistunut"
+  "completed": "Valmistunut",
+  "timeline description": "Näppäimillä voit vaihtaa aikajanan tilaa. Tämä on vain demoa varten, sillä oikeassa käytössä tila haetaan esim. etenemistä seuraavasta lokidatasta. Aikajanassa on tilat 'vastaanotettu', 'arvioitavana', kehityksessä' ja 'valmistunut'. Lisäksi epäonnistumista kuvaavat tilat 'torjuttu' (ennen arviointia), 'hylätty' (arvioinnin jälkeen) ja 'keskeytetty' (kehityksen aikana)."
 }
