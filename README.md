@@ -67,4 +67,13 @@ A demo web application for selected React components collected from various proj
 
 **Material UI**
 * https://material-ui.com/ (2020-12-02)
+
+**ESLint**
+* https://www.npmjs.com/package/eslint (2020-12-03)
+
+**Black**
+* https://github.com/psf/black (2020-12-03)
+
+**i18next**
+* https://react.i18next.com/latest/using-with-hooks (2020-12-03)
  
