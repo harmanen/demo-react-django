@@ -15,12 +15,12 @@ const useStyles = makeStyles((theme) => ({
   container: {
     width: '100%',
     maxWidth: APP_MAX_WIDTH,
+    height: '100vh',
+    background: theme.palette.background.main,
   },
   topBar: { height: TOP_BAR_HEIGHT, width: '100%' },
   mainContent: {
-    height: `calc(100vh - ${TOP_BAR_HEIGHT}px)`,
     width: '100%',
-    background: theme.palette.background.main,
   },
 }));
 
