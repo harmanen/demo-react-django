@@ -71,6 +71,10 @@ A demo web application for selected React components collected from various proj
 **ESLint**
 * https://www.npmjs.com/package/eslint (2020-12-03)
 
+**Prettier**
+* https://prettier.io/docs/en/install.html (2020-12-03)
+* https://prettier.io/docs/en/integrating-with-linters.html (2020-12-03)
+
 **Black**
 * https://github.com/psf/black (2020-12-03)
 
