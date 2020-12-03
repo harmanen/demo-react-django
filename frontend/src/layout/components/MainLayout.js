@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Box, Typography } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import TopBar from './TopBar';
 import { TOP_BAR_HEIGHT } from '../constants';
+import Timeline from '../../timeline/components/Timeline';
 
 const useStyles = makeStyles((theme) => ({
   topBar: { height: TOP_BAR_HEIGHT },
@@ -18,7 +19,7 @@ const MainLayout = () => {
   const theme = useTheme();
 
   const isMobile = useMediaQuery(
-    theme.breakpoints.down('sm'),
+    theme.breakpoints.down('xs'),
   );
 
   const [tabValue, setTabValue] = useState(0);
@@ -27,7 +28,13 @@ const MainLayout = () => {
     setTabValue(newValue);
   };
 
-  const tabs = ['first', 'second', 'third']; // TMP
+  const tabs = [
+    // Add names to translations!
+    {
+      name: 'timeline',
+      component: Timeline,
+    },
+  ];
 
   return (
     <Box>
@@ -44,7 +51,7 @@ const MainLayout = () => {
       {/* Main content  */}
       {/* TBD */}
       <Box p={1} className={classes.mainContent}>
-        <Typography>{tabs[tabValue]}</Typography>
+        {tabs[tabValue].component}
       </Box>
     </Box>
   );

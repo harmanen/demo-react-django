@@ -1,3 +1,7 @@
+/* eslint-disable indent */
+/* eslint-disable operator-linebreak */
+// ^ Conflicts between prettier and eslint, fix later...
+
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles, useTheme } from '@material-ui/styles';

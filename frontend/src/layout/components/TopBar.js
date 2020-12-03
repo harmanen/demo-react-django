@@ -100,10 +100,10 @@ const TopBar = ({
             >
               {tabs.map((tab, index) => (
                 <MenuItem
-                  key={tab}
+                  key={t(tab.name)}
                   onClick={() => handleClickMenuItem(index)}
                 >
-                  {tab}
+                  {t(tab.name)}
                 </MenuItem>
               ))}
             </Menu>
@@ -122,7 +122,11 @@ const TopBar = ({
               }}
             >
               {tabs.map((tab) => (
-                <Tab label={tab} id={tabValue} key={tab} />
+                <Tab
+                  label={t(tab.name)}
+                  id={tabValue}
+                  key={t(tab.name)}
+                />
               ))}
             </Tabs>
             <LanguageSelector />
@@ -134,7 +138,7 @@ const TopBar = ({
 };
 
 TopBar.propTypes = {
-  tabs: PropTypes.arrayOf(PropTypes.string).isRequired,
+  tabs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   tabValue: PropTypes.number.isRequired,
   setTabValue: PropTypes.func.isRequired,
   handleTabChange: PropTypes.func.isRequired,
