@@ -165,7 +165,7 @@ const Timeline = () => {
         <Grid
           container
           direction={isMobile ? 'column' : 'row'}
-          justify="space-between"
+          justify="space-around"
           alignItems="center"
         >
           {Object.entries(STATE_CODES).map(
