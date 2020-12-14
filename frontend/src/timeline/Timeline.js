@@ -177,6 +177,7 @@ const Timeline = () => {
                   size={isMobile ? 'small' : 'medium'}
                   onClick={() => handleClickState(code)}
                   className={classes.button}
+                  disabled={text === STATE_CODES[state]}
                 >
                   {t(text)}
                 </Button>
