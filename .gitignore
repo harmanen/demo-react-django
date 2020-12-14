@@ -2,3 +2,4 @@
 *pyc
 node_modules
 frontend/static/main.js
+backend/*/migrations/*
