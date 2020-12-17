@@ -6,7 +6,7 @@ class Timeline(models.Model):
     RECEIVED = "RE"
     TURNED_DOWN = "TU"
     IN_EVALUATION = "EV"
-    REJECTED = "RE"
+    REJECTED = "RJ"
     IN_DEVELOPMENT = "DE"
     DISCONTINUED = "DI"
     COMPLETED = "CO"
