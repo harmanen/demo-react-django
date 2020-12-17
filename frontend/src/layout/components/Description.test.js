@@ -9,6 +9,8 @@ const description = 'Some text...';
 
 describe('Description', () => {
   describe('Desktop', () => {
+    store.dispatch(setIsMobile(false));
+
     const wrapper = mount(
       <ProviderStack>
         <Description description={description} />

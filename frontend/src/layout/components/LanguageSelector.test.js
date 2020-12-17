@@ -9,8 +9,12 @@ import {
 import ProviderStack from '../../test/components/ProviderStack';
 import LanguageSelector from './LanguageSelector';
 import { LANGUAGE_CODES } from '../../constants';
+import store from '../../store';
+import { setIsMobile } from '../slices';
 
 describe('LanguageSelector', () => {
+  store.dispatch(setIsMobile(false));
+
   const wrapper = mount(
     <ProviderStack>
       <LanguageSelector />
