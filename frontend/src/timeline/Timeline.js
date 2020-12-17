@@ -2,7 +2,7 @@
 /* eslint-disable operator-linebreak */
 // ^ Conflicts between prettier and eslint, fix later...
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/styles';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,9 +18,13 @@ import {
 
 import CurrentStepIcon from '@material-ui/icons/MoreHoriz';
 import { STATE_CODES } from './constants';
-import { setTimelineState } from './slices';
+import {
+  setSavedTimelineState,
+  setTimelineState,
+} from './slices';
 import { MEDIA_LIMIT } from '../constants';
 import Description from '../layout/components/Description';
+import { getTimeline } from './services';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -96,17 +100,26 @@ const Timeline = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const state = useSelector(
-    (reduxState) => reduxState.timeline,
-  );
-
   const isMobile = useSelector(
     (reduxState) => reduxState.isMobile,
+  );
+
+  // Current state in app
+  const state = useSelector(
+    (reduxState) => reduxState.timeline,
   );
 
   const handleClickState = (code) => {
     dispatch(setTimelineState(code));
   };
+
+  // Saved state in database
+  // Fetch and update initial value
+  useEffect(() => {
+    getTimeline(1).then((data) => {
+      dispatch(setSavedTimelineState(data.state[0]));
+    });
+  });
 
   const renderStep = (step) => {
     let render;

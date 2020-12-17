@@ -3,11 +3,16 @@ import {
   configureStore,
 } from '@reduxjs/toolkit';
 
-import timelineReducer from './timeline/slices';
+import {
+  timelineReducer,
+  savedTimelineReducer,
+} from './timeline/slices';
+
 import mediaReducer from './layout/slices';
 
 const reducer = combineReducers({
   timeline: timelineReducer,
+  savedTimeline: savedTimelineReducer,
   isMobile: mediaReducer,
 });
 
