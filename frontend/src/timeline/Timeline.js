@@ -231,7 +231,7 @@ const Timeline = () => {
       <Button
         color="primary"
         variant="contained"
-        disabled={savedState === state}
+        disabled={savedState ? savedState === state : true}
         onClick={clickSave}
         className={classes.saveButton}
       >
