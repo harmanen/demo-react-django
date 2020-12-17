@@ -23,7 +23,7 @@ describe('MainLayout', () => {
   it('Should render first component', () => {
     expect(
       wrapper
-        .find({ 'data-testId': 'timelineDescription' })
+        .find({ 'data-testid': 'timelineDescription' })
         .find(Description)
         .exists(),
     ).to.eql(true);

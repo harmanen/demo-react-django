@@ -11,3 +11,10 @@ export const STATE_CODES = {
   DI: 'discontinued',
   CO: 'completed',
 };
+
+export const STEP_LABELS = [
+  'received',
+  'in evaluation',
+  'in development',
+  'completed',
+];

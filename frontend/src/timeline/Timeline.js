@@ -18,7 +18,11 @@ import {
 } from '@material-ui/core';
 
 import CurrentStepIcon from '@material-ui/icons/MoreHoriz';
-import { STATE_CODES, TIMELINE_ID } from './constants';
+import {
+  STATE_CODES,
+  STEP_LABELS,
+  TIMELINE_ID,
+} from './constants';
 
 import {
   setSavedTimelineState,
@@ -88,13 +92,6 @@ const useStyles = makeStyles((theme) => ({
   saveButton: { width: 'max-content', marginRight: 8 },
 }));
 
-const stepLabels = [
-  'received',
-  'in evaluation',
-  'in development',
-  'completed',
-];
-
 const stepIndices = {
   RE: 0,
   TU: 1,
@@ -153,7 +150,7 @@ const Timeline = () => {
     let render;
 
     // Discontinued
-    if (state === 'DI' && step === stepLabels[2]) {
+    if (state === 'DI' && step === STEP_LABELS[2]) {
       render = (
         <Step key={step} className={classes.step}>
           <StepLabel error>
@@ -164,7 +161,7 @@ const Timeline = () => {
       // Rejected or turned down
     } else if (
       (state === 'RJ' || state === 'TU') &&
-      step === stepLabels[1]
+      step === STEP_LABELS[1]
     ) {
       render = (
         <Step key={step} className={classes.step}>
@@ -201,7 +198,7 @@ const Timeline = () => {
     <Box p={2} className={classes.container}>
       <Description
         description={t('timeline description')}
-        data-testId="timelineDescription"
+        data-testid="timelineDescription"
       />
       <Box className={classes.innerContainer}>
         <Grid
@@ -212,7 +209,11 @@ const Timeline = () => {
         >
           {Object.entries(STATE_CODES).map(
             ([code, text]) => (
-              <Grid item key={code}>
+              <Grid
+                item
+                key={code}
+                data-testid="timelineButtonGrid"
+              >
                 <Button
                   variant="outlined"
                   color="secondary"
@@ -233,10 +234,13 @@ const Timeline = () => {
           orientation={isMobile ? 'vertical' : 'horizontal'}
           className={classes.stepper}
         >
-          {stepLabels.map((step) => renderStep(step))}
+          {STEP_LABELS.map((step) => renderStep(step))}
         </Stepper>
       </Box>
-      <Box className={classes.saveButtonBox}>
+      <Box
+        className={classes.saveButtonBox}
+        data-testid="timelineSaveButtonBox"
+      >
         <Button
           color="primary"
           variant="contained"
