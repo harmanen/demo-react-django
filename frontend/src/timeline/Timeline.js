@@ -194,6 +194,7 @@ const Timeline = () => {
     <Box p={2} className={classes.container}>
       <Description
         description={t('timeline description')}
+        data-testId="timelineDescription"
       />
       <Box className={classes.innerContainer}>
         <Grid
