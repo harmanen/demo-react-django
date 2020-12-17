@@ -9,5 +9,6 @@
   "discontinued": "Discontinued",
   "completed": "Completed",
   "save": "Save",
+  "currently saved": "Currently saved",
   "timeline description": "Use the buttons to change timeline state. This is just for the demo purposes. In real case the state would be taken from some log data tracking the progress. Timeline consists of steps 'received', 'in evaluation', 'in development' and 'completed'. Additional failure steps are 'turned down' (before evaluation), 'rejected' (after evaluation) and 'discontinued' (during development). Timeline state can be saved to database using the 'Save' button."
 }

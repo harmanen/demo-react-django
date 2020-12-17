@@ -14,6 +14,7 @@ import {
   Box,
   Grid,
   Button,
+  Typography,
 } from '@material-ui/core';
 
 import CurrentStepIcon from '@material-ui/icons/MoreHoriz';
@@ -78,7 +79,13 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginBottom: 8,
   },
-  saveButton: { width: 'max-content', marginTop: 16 },
+  saveButtonBox: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    marginTop: 16,
+  },
+  saveButton: { width: 'max-content', marginRight: 8 },
 }));
 
 const stepLabels = [
@@ -229,15 +236,26 @@ const Timeline = () => {
           {stepLabels.map((step) => renderStep(step))}
         </Stepper>
       </Box>
-      <Button
-        color="primary"
-        variant="contained"
-        disabled={savedState ? savedState === state : true}
-        onClick={clickSave}
-        className={classes.saveButton}
-      >
-        {t('save')}
-      </Button>
+      <Box className={classes.saveButtonBox}>
+        <Button
+          color="primary"
+          variant="contained"
+          disabled={
+            savedState ? savedState === state : true
+          }
+          onClick={clickSave}
+          className={classes.saveButton}
+        >
+          {t('save')}
+        </Button>
+        {savedState && (
+          <Typography variant="caption">
+            {`${t('currently saved')}: ${t(
+              STATE_CODES[savedState],
+            )}`}
+          </Typography>
+        )}
+      </Box>
     </Box>
   );
 };
