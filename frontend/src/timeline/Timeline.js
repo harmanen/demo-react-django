@@ -17,14 +17,16 @@ import {
 } from '@material-ui/core';
 
 import CurrentStepIcon from '@material-ui/icons/MoreHoriz';
-import { STATE_CODES } from './constants';
+import { STATE_CODES, TIMELINE_ID } from './constants';
+
 import {
   setSavedTimelineState,
   setTimelineState,
 } from './slices';
+
 import { MEDIA_LIMIT } from '../constants';
 import Description from '../layout/components/Description';
-import { getTimeline } from './services';
+import { getTimeline, updateTimeline } from './services';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -76,6 +78,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginBottom: 8,
   },
+  saveButton: { width: 'max-content', marginTop: 16 },
 }));
 
 const stepLabels = [
@@ -116,10 +119,28 @@ const Timeline = () => {
   // Saved state in database
   // Fetch and update initial value
   useEffect(() => {
-    getTimeline(1).then((data) => {
-      dispatch(setSavedTimelineState(data.state[0]));
-    });
-  });
+    getTimeline(TIMELINE_ID)
+      .then((data) => {
+        dispatch(setSavedTimelineState(data.state[0]));
+      })
+      // eslint-disable-next-line no-console
+      .catch((error) => console.log(error));
+  }, [dispatch]);
+
+  const savedState = useSelector(
+    (reduxState) => reduxState.savedTimeline,
+  );
+
+  // Update timeline in database when saved
+  const clickSave = () => {
+    // eslint-disable-next-line implicit-arrow-linebreak
+    updateTimeline({ id: TIMELINE_ID, state })
+      .then((data) => {
+        dispatch(setSavedTimelineState(data.state[0]));
+      })
+      // eslint-disable-next-line no-console
+      .catch((error) => console.log(error));
+  };
 
   const renderStep = (step) => {
     let render;
@@ -207,6 +228,15 @@ const Timeline = () => {
           {stepLabels.map((step) => renderStep(step))}
         </Stepper>
       </Box>
+      <Button
+        color="primary"
+        variant="contained"
+        disabled={savedState === state}
+        onClick={clickSave}
+        className={classes.saveButton}
+      >
+        {t('save')}
+      </Button>
     </Box>
   );
 };
