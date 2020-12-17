@@ -11,3 +11,5 @@ export const APP_MAX_WIDTH = 1280; // In pixels
 // Media size limit for mobile devices
 // Used to change layout from horizontal to vertical etc.
 export const MEDIA_LIMIT = 'xs';
+
+export const BASE_URL = '/api/';
