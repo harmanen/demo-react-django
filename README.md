@@ -1,5 +1,5 @@
 # demo-react-django
-A demo/showcase web application for selected React components collected from various projects. See wiki for useful links.
+A demo/showcase web application for selected React components collected from various projects. See wiki for additional information.
 
  **Instructions**
  
