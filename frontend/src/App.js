@@ -17,7 +17,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(setIsMobile(currentMedia));
-  }, [currentMedia]);
+  }, [currentMedia, dispatch]);
 
   return <Route component={MainLayout} path="/" />;
 };
