@@ -18,11 +18,12 @@ import translations from '../locales/en/translation.json';
 import { setSavedTimelineState } from './slices';
 
 const savedState = Object.keys(STATE_CODES)[0];
+const initialSavedState = store.getState().savedTimeline;
+store.dispatch(setSavedTimelineState(savedState));
 
 describe('Timeline', () => {
   describe('Desktop', () => {
     store.dispatch(setIsMobile(false));
-    store.dispatch(setSavedTimelineState(savedState));
 
     const wrapper = mount(
       <ProviderStack>
@@ -205,3 +206,6 @@ describe('Timeline', () => {
     });
   });
 });
+
+// Reset initial state for other tests
+store.dispatch(setSavedTimelineState(initialSavedState));
