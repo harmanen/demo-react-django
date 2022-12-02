@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Tabs, Typography } from '@material-ui/core';
+import { Menu, Tabs, Typography } from '@mui/material';
 import store from '../../store';
 import ProviderStack from '../../test/components/ProviderStack';
 import { setIsMobile } from '../slices';

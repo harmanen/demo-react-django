@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/styles';
-import { Box } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
+import { Box } from '@mui/material';
 import TopBar from './TopBar';
 import { TOP_BAR_HEIGHT } from '../constants';
 import Timeline from '../../timeline/Timeline';

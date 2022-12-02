@@ -1,4 +1,4 @@
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import createMuiTheme from '@mui/material/styles/createTheme';
 
 // MUI color tool https://material.io/resources/color/#!/?view.left=0&view.right=0
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography } from '@material-ui/core';
+import { Box, Typography } from '@mui/material';
 import ProviderStack from '../../test/components/ProviderStack';
 import Description from './Description';
 import store from '../../store';

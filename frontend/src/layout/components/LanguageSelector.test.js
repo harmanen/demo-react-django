@@ -1,10 +1,6 @@
 import React from 'react';
 
-import {
-  FormControl,
-  Menu,
-  Select,
-} from '@material-ui/core';
+import { FormControl, Menu, Select } from '@mui/material';
 
 import ProviderStack from '../../test/components/ProviderStack';
 import LanguageSelector from './LanguageSelector';

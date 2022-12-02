@@ -4,7 +4,7 @@
 
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from '@mui/styles';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -15,9 +15,9 @@ import {
   Grid,
   Button,
   Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 
-import CurrentStepIcon from '@material-ui/icons/MoreHoriz';
+import CurrentStepIcon from '@mui/icons-material/MoreHoriz';
 import {
   STATE_CODES,
   STEP_LABELS,

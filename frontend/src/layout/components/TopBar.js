@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from '@mui/styles';
 
 import {
   Box,
@@ -12,7 +12,7 @@ import {
   Tab,
   Tabs,
   Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import { MENU_CONTAINER_HEIGHT } from '../constants';
 import LanguageSelector from './LanguageSelector';

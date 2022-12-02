@@ -13,8 +13,13 @@
   "license": "ISC",
   "dependencies": {
     "@babel/runtime": "^7.20.6",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/core": "^5.0.0-alpha.54",
+    "@mui/icons-material": "^5.10.16",
     "@mui/material": "^5.10.16",
     "@mui/styled-engine-sc": "^5.10.16",
+    "@mui/styles": "^5.10.16",
     "@reduxjs/toolkit": "^1.9.1",
     "axios": "^1.2.0",
     "i18next": "^22.0.6",

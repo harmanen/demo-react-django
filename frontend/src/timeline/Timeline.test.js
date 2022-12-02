@@ -6,7 +6,7 @@ import {
   StepLabel,
   Stepper,
   Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import Description from '../layout/components/Description';
 import { setIsMobile } from '../layout/slices';

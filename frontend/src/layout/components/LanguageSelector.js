@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles } from '@mui/styles';
 
 import {
   FormControl,
   MenuItem,
   Select,
-} from '@material-ui/core';
+} from '@mui/material';
 
 import {
   LANGUAGE_CODES,
