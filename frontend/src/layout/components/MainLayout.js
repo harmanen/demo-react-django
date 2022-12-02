@@ -37,7 +37,7 @@ const MainLayout = () => {
     // Add names to translations!
     {
       name: 'timeline',
-      component: Timeline,
+      component: <Timeline />,
     },
   ];
 
@@ -55,7 +55,7 @@ const MainLayout = () => {
         </Box>
         {/* Main content  */}
         <Box p={1} className={classes.mainContent}>
-          {tabs[tabValue].component}
+          <>{tabs[tabValue].component}</>
         </Box>
       </Box>
     </Box>

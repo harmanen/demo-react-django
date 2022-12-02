@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     maxWidth: 1000,
     overflowX: 'auto',
+    marginTop: '1em',
   },
   step: {
     [theme.breakpoints.down(MEDIA_LIMIT)]: {
@@ -74,8 +75,6 @@ const useStyles = makeStyles((theme) => ({
     height: 36,
     width: 36,
     border: `5px solid ${theme.palette.primary.main}`,
-    marginTop: -6,
-    marginBottom: -6,
     [theme.breakpoints.down(MEDIA_LIMIT)]: {
       marginLeft: -5,
     },
